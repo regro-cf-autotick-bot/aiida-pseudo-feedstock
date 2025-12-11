@@ -12,18 +12,18 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - flit-core >=3.4,<4
     - pip
-    - python >=3.9
+    - python {{ python_min }}
   run:
     - aiida-core ~=2.6
     - click ~=8.0,<8.2
     - pint >=0.23.0,<0.25.0
-    - python >=3.9
+    - python >={{ python_min }}
     - requests ~=2.20
 
 test:
@@ -33,6 +33,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://pypi.org/project/aiida-pseudo/
